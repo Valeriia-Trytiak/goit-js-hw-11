@@ -14,6 +14,10 @@ function onSubmitBtn(evt) {
   evt.preventDefault();
   refs.containerCards.innerHTML = '';
   const valueSearch = evt.target.elements.searchQuery.value;
+  console.dir(evt.target.elements.searchQuery);
+  if (valueSearch === ' ' || valueSearch === '') {
+    return Notify.failure('Enter your search details.');
+  }
   serviceSearchImg(valueSearch).then(data => {
     createCards(data.hits);
     // refs.containerCards.innerHTML = createCards(data.hits);
@@ -35,20 +39,22 @@ function createCards(arr) {
         downloads,
       }) => {
         console.log(webformatURL);
-        return `<img src="${webformatURL}" alt="${tags}" loading="lazy" />
+        return `<div class ="photo-card">
+        <img src="${webformatURL}" alt="${tags}" width = "" height ="" loading="lazy" />
         <div class="info">
           <p class="info-item">
-            <b>Likes ${likes}</b>
+            <b>Likes <span class= "item-text">${likes}</span></b>
           </p>
           <p class="info-item">
-            <b>Views ${views}</b>
+            <b>Views <span class= "item-text">${views}</span></b>
           </p>
           <p class="info-item">
-            <b>Comments ${comments}</b>
+            <b>Comments <span class= "item-text">${comments}</span></b>
           </p>
           <p class="info-item">
-            <b>Downloads ${downloads}</b>
+            <b>Downloads <span class= "item-text">${downloads}</span></b>
           </p>
+        </div>
         </div>`;
       }
     )

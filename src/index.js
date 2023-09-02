@@ -8,21 +8,38 @@ const refs = {
   containerCards: document.querySelector('.gallery'),
 };
 
+let gallery = new SimpleLightbox('.gallery a');
+
 refs.formEL.addEventListener('submit', onSubmitBtn);
+refs.containerCards.addEventListener('click', onClickCard);
 
 function onSubmitBtn(evt) {
   evt.preventDefault();
   refs.containerCards.innerHTML = '';
   const valueSearch = evt.target.elements.searchQuery.value;
-  console.dir(evt.target.elements.searchQuery);
+
   if (valueSearch === ' ' || valueSearch === '') {
     return Notify.failure('Enter your search details.');
   }
-  serviceSearchImg(valueSearch).then(data => {
-    createCards(data.hits);
-    // refs.containerCards.innerHTML = createCards(data.hits);
-    refs.containerCards.insertAdjacentHTML('beforeend', createCards(data.hits));
-  });
+  serviceSearchImg(valueSearch)
+    .then(data => {
+      createCards(data.hits);
+      refs.containerCards.insertAdjacentHTML(
+        'beforeend',
+        createCards(data.hits)
+      );
+    })
+    .catch(error => {
+      Notify.failure(error.message);
+    })
+    .finally(() => {
+      gallery.refresh();
+    });
+}
+
+function onClickCard(evt) {
+  evt.preventDefault();
+  gallery.next();
 }
 
 function createCards(arr) {
@@ -38,9 +55,10 @@ function createCards(arr) {
         comments,
         downloads,
       }) => {
-        console.log(webformatURL);
         return `<div class ="photo-card">
-        <img src="${webformatURL}" alt="${tags}" width = "" height ="" loading="lazy" />
+       <a class="gallery-link" href="${largeImageURL}"> 
+       <img src="${webformatURL}" alt="${tags}" width = "" height ="" loading="lazy" />
+       </a>
         <div class="info">
           <p class="info-item">
             <b>Likes <span class= "item-text">${likes}</span></b>

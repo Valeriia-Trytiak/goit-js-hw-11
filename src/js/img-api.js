@@ -22,7 +22,6 @@ async function serviceSearchImg(currentPage, valueSearch) {
         'Sorry, there are no images matching your search query. Please try again.'
       );
     }
-    console.log(response);
     return response.data;
   } catch (error) {
     Notify.failure(error.message);

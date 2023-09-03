@@ -113,6 +113,7 @@ input:focus {
   background: var(--color-btn);
   border-radius: 0 5px 5px 0;
   cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
 }
 
 .btn-search:focus,
@@ -145,48 +146,34 @@ input:focus {
 .photo-card {
   flex-basis: calc((100% - 20px * (4 - 1)) / 4);
   background-color: var(--bg-input);
-  border: 1 solid #e7e9fc;
+  border: 1 solid var(--bg-color);
   border-radius: 4px;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 .gallery-link {
-  color: #212529;
+  color: var(--color-text);
 }
 
 .info {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  padding: 3px;
+  padding: 3px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
 }
 
 .info-item {
-  flex-basis: calc((100% - 5px * (4 - 1)) / 4);
+  /* flex-basis: calc((100% - 5px * (4 - 1)) / 4); */
+  text-align: center;
 }
+
 .item-text {
   font-weight: 500;
 }
-
-/* .btn {
-  display: inline-block;
-  font-weight: 500;
-  line-height: 1.5;
-  color: #212529;
-  text-align: center;
-  cursor: pointer;
-  border: 1px solid #bdbdbd;
-  background-color: #eee;
-  padding: 2px 5px;
-  font-size: 13px;
-  border-radius: 4px;
-  transition: background-color 0.15s ease-in-out;
-}
-
-.btn:hover,
-.btn:focus {
-  background-color: #bdbdbd;
-} */
 
 /**
   |==================================================
@@ -206,6 +193,7 @@ input:focus {
   text-decoration: none;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
 }
 
 .load-more-hidden {

@@ -2,20 +2,27 @@
   box-sizing: border-box;
 }
 
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
 .container {
   margin: 0 auto;
 }
 
 .form-container {
   display: flex;
-  height: 50px;
-  background-color: #8a2be2;
+  height: 70px;
+  background: linear-gradient(21deg, #dd03e4, #5611ec);
   margin-bottom: 20px;
   justify-content: center;
 }
 
 .search-form {
-  padding: 11px;
+  padding: 21px;
 }
 
 input {
@@ -42,6 +49,7 @@ input:focus {
   gap: 20px;
   justify-content: center;
   padding: 0;
+  margin-bottom: 20px;
 }
 
 .photo-card {
@@ -50,6 +58,10 @@ input:focus {
   border-radius: 4px;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+.gallery-link {
+  text-decoration: none;
+  color: #212529;
 }
 
 img {
@@ -88,21 +100,28 @@ img {
   transition: background-color 0.15s ease-in-out;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
   background-color: #bdbdbd;
 }
 
 .load-more {
+  display: block;
   background-color: #8a2be2;
   border-radius: 4px;
   color: white;
   padding: 15px 32px;
+  margin: 0 auto;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
   cursor: pointer;
 }
 .load-more-hidden {
   display: none;
+}
+
+.load-more:focus,
+.load-more:hover {
+  background-color: #4b0082;
 }
